@@ -1,0 +1,37 @@
+a {
+  color: $vel-color-primary;
+
+  &:hover {
+    color: darken($vel-color-primary, 10%);
+  }
+}
+
+.btn {
+  i {
+    margin-right: 10px;
+  }
+}
+
+.btn-primary {
+  color: white;
+  background-color: $vel-color-primary;
+  border-color: $vel-color-primary;
+
+  &:hover {
+    color: white;
+    background-color: darken($vel-color-primary, 10%);
+    border-color: darken($vel-color-primary, 10%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($vel-color-primary, 0.5)
+  }
+
+  &:not(:disabled):not(.disabled) {
+    &:active {
+      color: white;
+      background-color: darken($vel-color-primary, 10%);
+      border-color: darken($vel-color-primary, 10%);
+    }
+  }
+}

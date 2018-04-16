@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import dataSites from '../../data/EnvatoSite';
-import { fetchStatement } from '../../actions/statement';
+import { fetchStatement, fetchAuthorItems } from '../../actions/statement';
 
 class SearchForm extends React.Component {
   state = {
@@ -24,6 +24,10 @@ class SearchForm extends React.Component {
         endDate: moment(today).format('YYYY-MM-DD')
       }
     });
+    const user = JSON.parse(localStorage.user);
+    if (this.props.loadedUser) {
+      this.props.fetchAuthorItems(user.username);
+    }
   }
 
   validate = data => {
@@ -54,6 +58,7 @@ class SearchForm extends React.Component {
 
   render() {
     const { data, errors } = this.state;
+    const { authorItems } = this.props;
 
     return (
       <div className="card mb-3">
@@ -124,7 +129,17 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.propTypes = {
-  fetchStatement: PropTypes.func.isRequired
+  fetchStatement: PropTypes.func.isRequired,
+  fetchAuthorItems: PropTypes.func.isRequired,
+  loadedUser: PropTypes.bool.isRequired,
+  authorItems: PropTypes.arrayOf(
+    PropTypes.shape()
+  ).isRequired
 };
 
-export default connect(null, { fetchStatement })(SearchForm);
+const mapStateToProps = (state) => ({
+  loadedUser: state.user.loaded,
+  authorItems: state.statement.authorItems
+});
+
+export default connect(mapStateToProps, { fetchStatement, fetchAuthorItems })(SearchForm);

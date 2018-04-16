@@ -14,3 +14,28 @@ export const fetchStatementFail = errors => ({
   type: Constants.FETCH_STATEMENT_FAIL,
   errors
 });
+
+export const fetchAuthorItems = data => ({
+  type: Constants.FETCH_AUTHOR_ITEMS,
+  data
+});
+
+export const fetchAuthorItemsSuccess = data => ({
+  type: Constants.FETCH_AUTHOR_ITEMS_SUCCESS,
+  data
+});
+
+export const fetchAuthorItemsFail = errors => ({
+  type: Constants.FETCH_AUTHOR_ITEMS_FAIL,
+  errors
+});
+
+export const filterByItem = data => ({
+  type: Constants.FILTER_BY_ITEM,
+  data
+});
+
+export const filterByType = data => ({
+  type: Constants.FILTER_BY_STATEMENT_TYPE,
+  data
+});

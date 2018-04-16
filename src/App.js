@@ -11,7 +11,7 @@ import LoginPage from './components/pages/LoginPage';
 import ReportPage from './components/pages/ReportPage';
 
 class App extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     if (localStorage.VelaEnvatoToken) {
       this.props.fetchCurrentUser(localStorage.VelaEnvatoToken);
     }

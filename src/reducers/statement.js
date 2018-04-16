@@ -15,7 +15,7 @@ const initStateStatement = {
   startDate: '',
   endDate: '',
   site: '',
-  filterType: '',
+  filterType: 'compact',
   filterItem: ''
 };
 

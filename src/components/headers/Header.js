@@ -6,7 +6,7 @@ const Header = () => (
       <div className="header__content">
         <div className="header-logo text-center">
           <a className="header-logo__link d-inline" href="/">
-            <img className="img-fluid header-logo__image" src="/images/framgia-logo.png" alt="Logo" />
+            <img className="img-fluid header-logo__image" src="/images/logo.png" alt="Logo" />
           </a>
         </div>
       </div>

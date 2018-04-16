@@ -61,9 +61,7 @@ const ListData = (props) => {
 };
 
 ListData.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape()
-  ).isRequired
+  data: PropTypes.shape().isRequired
 }
 
 export default ListData;

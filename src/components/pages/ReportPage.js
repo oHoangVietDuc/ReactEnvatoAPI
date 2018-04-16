@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SearchFrom from '../statement/SearchForm';
+import SearchForm from '../statement/SearchForm';
+import SelectForm from '../statement/SelectForm';
 import List from '../statement/List';
 
 const ReportPage = (props) => {
@@ -12,7 +13,8 @@ const ReportPage = (props) => {
       <div className="container">
         <div className="sales-report">
           <div className="sales-report__filter">
-            <SearchFrom />
+            <SearchForm />
+            <SelectForm />
           </div>
           <div className="sales-report__data">
             <List />

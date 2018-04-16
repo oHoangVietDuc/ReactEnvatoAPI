@@ -30,6 +30,15 @@ export default {
             site: params.site
           }
         }
-      ).then(res => res.data)
+      ).then(res => res.data),
+    getAuthorItems:  params =>
+      axios.get(
+        `${PATH.PATH_API_DISCOVERY_V1}search/search/item`,
+        {
+          'params': {
+            username: params
+          }
+        }
+      )
   }
 };

@@ -21,24 +21,7 @@ class App extends React.Component {
     const { location } = this.props;
     return (
       <div className="app-container">
-        <GuestRoute
-          location={location}
-          path='/login'
-          exact
-          component={() => <RootContainer MainContent={LoginPage} />}
-        />
-        <PrivateRouter
-          location={location}
-          path='/'
-          exact
-          component={() => <RootContainer MainContent={HomePage} />}
-        />
-        <PrivateRouter
-          location={location}
-          path="/sales/report"
-          exact
-          component={() => <RootContainer MainContent={ReportPage} />}
-        />
+        <h1>This is demo APP</h1>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => localStorage.user ? <Component {...props} /> : <Redirect to="/login" />}
+    render={(props) => localStorage.user ? <Component {...props} /> : <Redirect to={`${process.env.PUBLIC_URL}/login`} />}
   />
 );
 

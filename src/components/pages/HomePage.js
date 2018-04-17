@@ -8,7 +8,7 @@ const HomePage = () => (
       <UserInfo />
       <div className="mb-30">&nbsp;</div>
       <div className="nav-main text-center">
-        <Link className="btn btn-primary" to="/sales/report">This is version trial. Click here</Link>
+        <Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/sales/report`}>This is version trial. Click here</Link>
       </div>
     </div>
   </main>

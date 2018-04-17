@@ -25,9 +25,7 @@ class SearchForm extends React.Component {
       }
     });
     const user = JSON.parse(localStorage.user);
-    if (this.props.loadedUser) {
-      this.props.fetchAuthorItems(user.username);
-    }
+    this.props.fetchAuthorItems(user.username);
   }
 
   validate = data => {
@@ -131,7 +129,6 @@ class SearchForm extends React.Component {
 SearchForm.propTypes = {
   fetchStatement: PropTypes.func.isRequired,
   fetchAuthorItems: PropTypes.func.isRequired,
-  loadedUser: PropTypes.bool.isRequired,
   authorItems: PropTypes.arrayOf(
     PropTypes.shape()
   ).isRequired

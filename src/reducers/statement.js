@@ -2,8 +2,6 @@ import {
   FETCH_STATEMENT,
   FETCH_STATEMENT_SUCCESS,
   FETCH_STATEMENT_FAIL,
-  FETCH_AUTHOR_ITEMS_SUCCESS,
-  FETCH_AUTHOR_ITEMS_FAIL,
   FILTER_BY_ITEM,
   FILTER_BY_STATEMENT_TYPE
 } from '../constants/statement';
@@ -27,10 +25,6 @@ export default function statement(state = initStateStatement, action) {
       return { ...state, results: action.data, loading: false };
     case FETCH_STATEMENT_FAIL:
       return { ...state, ...action.errors, loading: false };
-    case FETCH_AUTHOR_ITEMS_SUCCESS:
-      return { ...state, authorItems: action.data }
-    case FETCH_AUTHOR_ITEMS_FAIL:
-      return { ...state, errors: { ...action.errors } };
     case FILTER_BY_ITEM:
       return { ...state, filterItem: action.data }
     case FILTER_BY_STATEMENT_TYPE:

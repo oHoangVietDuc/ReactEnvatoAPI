@@ -18,9 +18,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, loadedUser } = this.props;
     return (
-      <div className="app-container">
+      <div className={`app-container ${!loadedUser && 'app-container--loading'}`}>
+        {!loadedUser && <div className="loader" />}
         <GuestRoute
           location={location}
           path={`${process.env.PUBLIC_URL}/login`}
@@ -48,7 +49,12 @@ App.propTypes = {
   fetchCurrentUser: PropTypes.func.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  loadedUser: PropTypes.bool.isRequired
 };
 
-export default connect(null, { fetchCurrentUser })(App);
+const mapStateToProps = (state) => ({
+  loadedUser: state.user.loaded
+});
+
+export default connect(mapStateToProps, { fetchCurrentUser })(App);

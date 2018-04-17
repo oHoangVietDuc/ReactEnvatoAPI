@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import * as actions from '../actions/statement';
 import API from '../api';
 
-export function* fetchUserStatement(action) {
+export default function* fetchUserStatement(action) {
   try {
     const respond = yield call(API.statement.getUserStatement, action.data);
     const data = respond.results;
@@ -18,15 +18,5 @@ export function* fetchUserStatement(action) {
     yield put(actions.fetchStatementSuccess(data));
   } catch (error) {
     yield put(actions.fetchStatementSuccess(error));
-  }
-}
-
-export function* fetchAuthorItems(action) {
-  try {
-    const respond = yield call(API.statement.getAuthorItems, action.data);
-    const data = respond.data.matches;
-    yield put(actions.fetchAuthorItemsSuccess(data));
-  } catch (error) {
-    yield put(actions.fetchAuthorItemsFail(error));
   }
 }

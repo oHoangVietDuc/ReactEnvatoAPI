@@ -28,3 +28,18 @@ export const fetchCurrentUserSuccess = user => ({
   type: Constants.FETCH_CURRENT_USER_SUCCESS,
   user
 });
+
+export const fetchAuthorItems = data => ({
+  type: Constants.FETCH_AUTHOR_ITEMS,
+  data
+});
+
+export const fetchAuthorItemsSuccess = data => ({
+  type: Constants.FETCH_AUTHOR_ITEMS_SUCCESS,
+  data
+});
+
+export const fetchAuthorItemsFail = errors => ({
+  type: Constants.FETCH_AUTHOR_ITEMS_FAIL,
+  errors
+});

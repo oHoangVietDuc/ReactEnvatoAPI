@@ -21,7 +21,7 @@ const SelectItems = (props) => {
           required
         >
           {isShowAll && <option value=''>All</option>}
-          {data.map((item, i) =>
+          {data && data.map((item, i) =>
             <option key={item.id} value={item.id}>{item.name}</option>)}
         </select>
       </div>

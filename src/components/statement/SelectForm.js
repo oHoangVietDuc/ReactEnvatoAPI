@@ -59,9 +59,9 @@ SelectForm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorItems: state.user.authorItems,
   filterItem: state.statement.filterItem,
-  filterType: state.statement.filterType,
-  authorItems: state.statement.authorItems
+  filterType: state.statement.filterType
 });
 
 export default connect(mapStateToProps, { filterByItem, filterByType })(SelectForm);

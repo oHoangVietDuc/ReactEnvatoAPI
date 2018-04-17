@@ -4,7 +4,16 @@ import * as PATH from './constants/path';
 export default {
   auth: {
     getPrivateUser: () => axios.get(`${PATH.PATH_API_V1}private/user/account.json`).then(res => res.data.account),
-    getPrivateUsername: () => axios.get(`${PATH.PATH_API_V1}private/user/username.json `).then(res => res.data.username)
+    getPrivateUsername: () => axios.get(`${PATH.PATH_API_V1}private/user/username.json `).then(res => res.data.username),
+    getAuthorItems:  params =>
+      axios.get(
+        `${PATH.PATH_API_DISCOVERY_V1}search/search/item`,
+        {
+          'params': {
+            username: params
+          }
+        }
+      )
   },
   statement: {
     getUserStatement: params =>
@@ -30,15 +39,6 @@ export default {
             site: params.site
           }
         }
-      ).then(res => res.data),
-    getAuthorItems:  params =>
-      axios.get(
-        `${PATH.PATH_API_DISCOVERY_V1}search/search/item`,
-        {
-          'params': {
-            username: params
-          }
-        }
-      )
+      ).then(res => res.data)
   }
 };

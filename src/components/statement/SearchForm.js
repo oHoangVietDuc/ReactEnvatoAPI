@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import dataSites from '../../data/EnvatoSite';
-import { fetchStatement, fetchAuthorItems } from '../../actions/statement';
+import { fetchStatement } from '../../actions/statement';
 
 class SearchForm extends React.Component {
   state = {
@@ -24,8 +24,6 @@ class SearchForm extends React.Component {
         endDate: moment(today).format('YYYY-MM-DD')
       }
     });
-    const user = JSON.parse(localStorage.user);
-    this.props.fetchAuthorItems(user.username);
   }
 
   validate = data => {
@@ -56,14 +54,13 @@ class SearchForm extends React.Component {
 
   render() {
     const { data, errors } = this.state;
-    const { authorItems } = this.props;
 
     return (
       <div className="card mb-3">
         <div className="card-body">
-          <div className="row">
-            <div className="col-md-6">
-              <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="col-md-6">
                 <div className="form-group row">
                   <label htmlFor="startDate" className="col-sm-4 col-form-label text-right">Start date</label>
                   <div className="col-sm-8">
@@ -117,9 +114,25 @@ class SearchForm extends React.Component {
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group row">
+                  <label htmlFor="type" className="col-sm-4 col-form-label text-right">Type</label>
+                  <div className="col-sm-8">
+                    <select
+                      className="custom-select"
+                      name="type"
+                      required
+                    >
+                      {dataSites.map((item, i) =>
+                        <option key={item.id} value={item.key}>{item.value}</option>)}
+                    </select>
+                    {errors.site && <div className="invalid-feedback">{errors.site}</div>}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
@@ -127,16 +140,11 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.propTypes = {
-  fetchStatement: PropTypes.func.isRequired,
-  fetchAuthorItems: PropTypes.func.isRequired,
-  authorItems: PropTypes.arrayOf(
-    PropTypes.shape()
-  ).isRequired
+  fetchStatement: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  loadedUser: state.user.loaded,
-  authorItems: state.statement.authorItems
+  loadedUser: state.user.loaded
 });
 
-export default connect(mapStateToProps, { fetchStatement, fetchAuthorItems })(SearchForm);
+export default connect(mapStateToProps, { fetchStatement })(SearchForm);

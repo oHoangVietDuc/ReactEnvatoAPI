@@ -26,12 +26,15 @@ export function * fetchUserSaga(action) {
   SetAuthorizationHeader(action.token);
   const user = yield call(API.auth.getPrivateUser);
   const userName = yield call(API.auth.getPrivateUsername);
+  const respond = yield call(API.auth.getAuthorItems, userName);
+  const authorItems = respond.data.matches;
   const userData = {
     ...user,
     username: userName
   }
   localStorage.user = JSON.stringify(userData);;
   // const user = JSON.parse(localStorage.user);
+  yield put(actions.fetchAuthorItemsSuccess(authorItems));
   yield put(actions.fetchCurrentUserSuccess(userData));
 }
 

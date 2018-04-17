@@ -61,6 +61,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build"
   },
+  "homepage": "https://duchv90.github.io/ReactEnvatoAPI/",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
@@ -113,6 +114,5 @@
     "eslint-plugin-react": "^7.7.0",
     "gh-pages": "^1.1.0",
     "prettier": "^1.11.1"
-  },
-  "homepage": "https://duchv90.github.io/ReactEnvatoAPI/"
+  }
 }

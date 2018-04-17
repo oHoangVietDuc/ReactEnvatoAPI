@@ -23,19 +23,19 @@ class App extends React.Component {
       <div className="app-container">
         <GuestRoute
           location={location}
-          path='/login'
+          path={`${process.env.PUBLIC_URL}/login`}
           exact
           component={() => <RootContainer MainContent={LoginPage} />}
         />
         <PrivateRouter
           location={location}
-          path='/'
+          path={`${process.env.PUBLIC_URL}/`}
           exact
           component={() => <RootContainer MainContent={HomePage} />}
         />
         <PrivateRouter
           location={location}
-          path="/sales/report"
+          path={`${process.env.PUBLIC_URL}/sales/report`}
           exact
           component={() => <RootContainer MainContent={ReportPage} />}
         />

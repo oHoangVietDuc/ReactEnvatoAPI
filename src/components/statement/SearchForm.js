@@ -25,9 +25,7 @@ class SearchForm extends React.Component {
       }
     });
     const user = JSON.parse(localStorage.user);
-    if (this.props.loadedUser) {
-      this.props.fetchAuthorItems(user.username);
-    }
+    this.props.fetchAuthorItems(user.username);
   }
 
   validate = data => {
@@ -63,9 +61,9 @@ class SearchForm extends React.Component {
     return (
       <div className="card mb-3">
         <div className="card-body">
-          <div className="row">
-            <div className="col-md-6">
-              <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="col-md-6">
                 <div className="form-group row">
                   <label htmlFor="startDate" className="col-sm-4 col-form-label text-right">Start date</label>
                   <div className="col-sm-8">
@@ -119,9 +117,25 @@ class SearchForm extends React.Component {
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group row">
+                  <label htmlFor="type" className="col-sm-4 col-form-label text-right">Type</label>
+                  <div className="col-sm-8">
+                    <select
+                      className="custom-select"
+                      name="type"
+                      required
+                    >
+                      {dataSites.map((item, i) =>
+                        <option key={item.id} value={item.key}>{item.value}</option>)}
+                    </select>
+                    {errors.site && <div className="invalid-feedback">{errors.site}</div>}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
@@ -131,7 +145,6 @@ class SearchForm extends React.Component {
 SearchForm.propTypes = {
   fetchStatement: PropTypes.func.isRequired,
   fetchAuthorItems: PropTypes.func.isRequired,
-  loadedUser: PropTypes.bool.isRequired,
   authorItems: PropTypes.arrayOf(
     PropTypes.shape()
   ).isRequired

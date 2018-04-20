@@ -12,7 +12,8 @@ const ListDataCompact = (props) => {
             <tr>
               <th scope="col">#</th>
               <th className="d-none" scope="col">Order ID</th>
-              <th scope="col">Item name</th>
+              <th className="d-none" scope="col">Country</th>
+              <th scope="col">Item type</th>
               <th scope="col">Order date</th>
               <th scope="col">Amount</th>
               <th scope="col">Extends support</th>
@@ -25,6 +26,7 @@ const ListDataCompact = (props) => {
                 <tr key={item.order_id}>
                   <th scope="row">{index + 1}</th>
                   <td className="d-none">{item.order_id}</td>
+                  <td className="d-none">{item.other_party_country}</td>
                   <td className="table-statement__name">{item.type}</td>
                   <td>{moment(item.date).format('YYYY-MM-DD hh:ss')}</td>
                   <td>{item.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
@@ -55,13 +57,10 @@ const ListDataCompact = (props) => {
         <div className="statement-total">
           <hr/>
           <div className="d-flex justify-content-end align-items-center">
+            Toltal sales: <span className="text-right">{data.numberSales}</span>
+          </div>
+          <div className="d-flex justify-content-end align-items-center">
             Toltal refund: <span className="text-right">{data.toltalAmountRefund.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
-          </div>
-          <div className="d-flex justify-content-end align-items-center">
-            Toltal without refund: <span className="text-right">{data.toltalAmountNoRefund.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
-          </div>
-          <div className="d-flex justify-content-end align-items-center">
-            Toltal extends support: <span className="text-right">{data.toltalExtendsSupport.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
           </div>
           <div className="d-flex justify-content-end align-items-center">
             Toltal without extends support: <span className="color-secondary text-right">{data.toltalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>

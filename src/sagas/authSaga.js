@@ -14,8 +14,11 @@ export function * userLoginSaga(action) {
       ...user,
       username: userName
     }
-    yield put(actions.LoginSuccess(userData));
     localStorage.user = JSON.stringify(userData);
+    const respond = yield call(API.auth.getAuthorItems, userName);
+    const authorItems = respond.data.matches;
+    yield put(actions.LoginSuccess(userData));
+    yield put(actions.fetchAuthorItemsSuccess(authorItems));
     history.push(`${process.env.PUBLIC_URL}/`);
   } catch (error) {
     yield put(actions.LoginFail(error));
@@ -33,9 +36,8 @@ export function * fetchUserSaga(action) {
     username: userName
   }
   localStorage.user = JSON.stringify(userData);;
-  // const user = JSON.parse(localStorage.user);
-  yield put(actions.fetchAuthorItemsSuccess(authorItems));
   yield put(actions.fetchCurrentUserSuccess(userData));
+  yield put(actions.fetchAuthorItemsSuccess(authorItems));
 }
 
 export function * userLogoutSaga(action) {

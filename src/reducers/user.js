@@ -8,14 +8,18 @@ import {
   FETCH_AUTHOR_ITEMS_FAIL,
 } from '../constants/auth';
 
-export default function user(state = { loading: false, loaded: false }, action) {
+const initState = {
+  loading: false, loaded: true, authorItems: []
+};
+
+export default function user(state = initState, action) {
   switch (action.type) {
     case USER_LOGIN:
-      return { ...state, loading: true };
+      return { ...state, loading: true, loaded: false };
     case USER_LOGIN_SUCCESS:
-      return { ...state, ...action.user, loading: false, loadedUser: true };
+      return { ...state, ...action.user, loading: false, loaded: true };
     case USER_LOGIN_FAIL:
-      return { ...state, loading: false }
+      return { ...state, loading: false, loaded: false }
     case FETCH_CURRENT_USER_REQUEST:
       return { ...state, loaded: false }
     case FETCH_CURRENT_USER_SUCCESS:

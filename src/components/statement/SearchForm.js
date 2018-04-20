@@ -115,22 +115,6 @@ class SearchForm extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="form-group row">
-                  <label htmlFor="type" className="col-sm-4 col-form-label text-right">Type</label>
-                  <div className="col-sm-8">
-                    <select
-                      className="custom-select"
-                      name="type"
-                      required
-                    >
-                      {dataSites.map((item, i) =>
-                        <option key={item.id} value={item.key}>{item.value}</option>)}
-                    </select>
-                    {errors.site && <div className="invalid-feedback">{errors.site}</div>}
-                  </div>
-                </div>
-              </div>
             </div>
           </form>
         </div>

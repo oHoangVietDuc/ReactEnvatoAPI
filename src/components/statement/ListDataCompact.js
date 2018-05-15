@@ -28,7 +28,7 @@ const ListDataCompact = (props) => {
                   <td className="d-none">{item.order_id}</td>
                   <td className="d-none">{item.other_party_country}</td>
                   <td className="table-statement__name">{item.type}</td>
-                  <td>{moment(item.date).format('YYYY-MM-DD hh:ss')}</td>
+                  <td>{moment(item.date, 'YYYY-MM-DD hh:mm:ss').format('YYYY-MM-DD hh:mm')}</td>
                   <td>{item.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
                   <td>{item.amount_extends_support.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
                   <td>{item.us_rwt.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
